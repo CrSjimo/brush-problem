@@ -25,16 +25,16 @@ int main(){
         getFail(s,fail);
         int len = strlen(s);
         int cnt=0;
-        fail[0] = -1;
-        int k = fail[len-1];
-        while(k!=-1){
-            if(s[k]==s[len-1])ans[cnt++]=k+1;
+        // fail[0] = -1;
+        int k = len;
+        while(k!=0){
+            ans[cnt++]=k;
             k=fail[k];
         }
         for(int i=0;i<cnt;i++){
             printf("%d ",ans[cnt-i-1]);
         }
-        printf("%d ",len);
+        printf("\n");
      }
     return 0;
 }
