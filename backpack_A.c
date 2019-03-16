@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<string.h>
-int dp[1010][1010],w[1010],c[1010];
+int dp[1010],w[1010],c[1010];
 int max(int a,int b){
     return a>b?a:b;
 }
@@ -16,15 +16,15 @@ int main(){
         for(int i=1;i<=n;i++)scanf("%d",c+i);
         for(int i=1;i<=n;i++)scanf("%d",w+i);
         for(int i=1;i<=n;i++){
-            for(int j=0;j<=m;j++){
-                if(j>=w[i]){
-                    dp[i][j]=max(dp[i-1][j],dp[i-1][j-w[i]]+c[i]);
-                }else{
+            for(int j=m;j>=w[i];j--){
+                // if(j>=w[i]){
+                    dp[j]=max(dp[j],dp[j-w[i]]+c[i]);
+                /*}else{
                     dp[i][j]=dp[i-1][j];
-                }
+                }*/
             }
         }
-        printf("%d\n",dp[n][m]);
+        printf("%d\n",dp[m]);
     }
     return 0;
 }
