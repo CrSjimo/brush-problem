@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
-bool dp[100][100];//一边 i 一边 j 能不能构成三角形
+bool dp[1005][1005];//一边 i 一边 j 能不能构成三角形
 int n,c,m;
-int sides[100];
+int sides[1005];
 int calc(int a,int b,int c){
     double p = 1.0*(a+b+c)/2;
     return sqrt(p*(p-a)*(p-b)*(p-c))*100;
@@ -35,7 +35,9 @@ int main(){
     for(int i=1;i<=m;i++){
         for(int j=0;j<=i;j++){
             if(dp[i][j]){
-                ans=max(ans,calc(i,j,c-i-j));
+                int k=c-i-j;
+                if(i+j>k&&i+k>j&&j+k>i)
+                    ans=max(ans,calc(i,j,c-i-j));
             }
         }
     }
