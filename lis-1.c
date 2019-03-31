@@ -14,28 +14,29 @@ int main(){
     scanf("%d",&cas);
     while(cas--){
         scanf("%d",&n);
-        for(int i=1;i<=n;i++){
-            scanf("%d",a+i);
-        }
         memset(dp,0,sizeof(dp));
-        memset(src,0,sizeof(src));
-        int maxn = -1001;
-        int mr = 0;
-        int ml =0;
-        int tmp=0;
         for(int i=1;i<=n;i++){
-            if(dp[i-1]>0){
-                src[i] = src[i-1];
+            scanf("%d",dp+i);
+        }
+        int maxn = -1001;
+        int mr = 1;
+        int ml =1;
+        int tmp=1;
+        for(int i=1;i<=n;i++){
+            // dp[i] = max(dp[i-1],0)+a[i];
+            if(dp[i-1] > 0){
+                dp[i]+=dp[i-1];
             }else{
-                src[i] = i;
+                tmp =i;
             }
-            dp[i] = max(dp[i-1],0)+a[i];
             if(maxn<dp[i]){
                 mr = i;
+                ml = tmp;
             }
             maxn = max(maxn,dp[i]);
         }
-        printf("Case %d:\n%d %d %d\n\n",++t,maxn,src[n],mr);
+        printf("Case %d:\n%d %d %d\n",++t,maxn,ml,mr);
+        if(cas)printf("\n");
     }
     return 0;
 }
