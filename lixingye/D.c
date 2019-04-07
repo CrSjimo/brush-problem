@@ -3,7 +3,7 @@
 int n,h;
 int a[105];
 int b[105];
-int dp[50010];
+int dp[60000];
 int min(int a,int b){
     return a<b?a:b;
 }
@@ -16,13 +16,13 @@ int main(){
     }
     dp[0] = 0;
     for(int i = 1;i<=n;i++){
-        for(int j = b[i];j<=2*h;j++){
+        for(int j = b[i];j<=h+5010;j++){
             dp[j] = min(dp[j],dp[j-b[i]]+a[i]);
         }
     }
-    int minn = 1<<30;
-    for(int i = h;i<=2*h;i++){
-        minn = min(dp[h],minn);
+    int minn = 1<<20;
+    for(int i = h;i<=h+5010;i++){
+        minn = min(dp[i],minn);
     }
     printf("%d\n",minn);
     return 0;
