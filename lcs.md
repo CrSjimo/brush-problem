@@ -32,4 +32,4 @@ for/*♂*/(int j = 1;j<=len2;j++){
 
 最后，`dp[len1][len2]`就是整个序列的最♂长子序列长♂度
 
-![当♂真](https://i0.hdslb.com/bfs/article/75d4fb31d1f4b8cb9467c15a0b1ea8ff0c80fb16.jpg@720w_720h.webp)
+![当♂真](./lcs-dangzhen.webp)
