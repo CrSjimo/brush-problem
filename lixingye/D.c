@@ -18,7 +18,7 @@ int main(){
     for(int i = 1;i<=n;i++){
         for(int j = b[i];j<=2*h;j++){
             dp[j] = min(dp[j],dp[j-b[i]]+a[i]);
-        }
+        }//max(dp[i][j-c[i]]+h[i],dp[i-1][j])
     }
     int minn = 1<<30;
     for(int i = h;i<=2*h;i++){
