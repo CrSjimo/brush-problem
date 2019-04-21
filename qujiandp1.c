@@ -24,24 +24,14 @@ void digui(int i,int j){
 int main(){
     scanf("%s",s);
     int len = strlen(s);
-    memset(dp,127,sizeof(dp));
+    // memset(dp,127,sizeof(dp));
     for(int i = 0;i<len;i++){
         dp[i][i] = 1;
     }
-    for(int i = 0;i<len-1;i++){
-        int j = i+1;
-        if(
-            (s[i] == '(' && s[j] == ')')
-            ||
-            (s[i] == '[' && s[j] == ']')
-        ){
-            dp[i][j] = 0;
-        }else{
-            dp[i][j] = dp[i][i] + dp[j][j];
-        }
-    }
-    for(int i = 0;i<len;i++){
-        for(int j = i+1;j<len;j++){
+    for(int c = 1;c<len;c++){
+        for(int i = 0;i+c<len;i++){
+            int j = i+c;
+            dp[i][j] = 1<<30;
             if(
                 (s[i] == '(' && s[j] == ')')
                 ||
@@ -56,15 +46,15 @@ int main(){
                     pth[i][j] = k;
                 }
             }
-        }
+        }        
     }
-    for(int i = 0;i<len;i++){
-        for(int j = 0;j<len;j++){
-            printf("%d ",pth[i][j]);
-        }
-        printf("\n");
-    }
-   //digui(0,len-1);
+    // for(int i = 0;i<len;i++){
+    //     for(int j = 0;j<len;j++){
+    //         printf("%d ",pth[i][j]);
+    //     }
+    //     printf("\n");
+    // }
+    digui(0,len-1);
     printf("\n");
     return 0;
 }
