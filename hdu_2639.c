@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<string.h>
+//第k优解
 int n,v,K;
 int w[1010],c[1010];
 int dpA[31],dpB[31],dp[1010][31];
