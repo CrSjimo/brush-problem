@@ -1,6 +1,7 @@
 #include<cstdio>
 #include<cstring>
 #include<queue>
+using namespace std;
 int n,a,b;
 int num[220];
 bool visited[220];
@@ -8,7 +9,7 @@ struct Node{
     int id;
     int dist;
 };
-typedef std::queue<Node> Queue;
+typedef queue<Node> Queue;
 void addNewNode(Queue &q,int nodeId,int nodeDist){
     if(nodeId <= n && nodeId >0 && !visited[nodeId]){
         Node tmp;
@@ -38,12 +39,12 @@ int bfs(int* num,int startPos,int endPos){
     return -1;
 }
 int main(){
-    while(std::scanf("%d",&n) && n){
-        std::scanf("%d%d",&a,&b);
+    while(~scanf("%d",&n) && n){
+        scanf("%d%d",&a,&b);
         for(int i = 1;i<=n;i++){
-            std::scanf("%d",num+i);
+            scanf("%d",num+i);
         }
-        std::printf("%d\n",bfs(num,a,b));
+        printf("%d\n",bfs(num,a,b));
     }
     return 0;
 }
