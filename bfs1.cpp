@@ -24,6 +24,7 @@ int bfs(int* num,int startPos,int endPos){
     Node tmp;
     tmp.id = startPos;
     tmp.dist = 0;
+    q.push(tmp);
     visited[startPos] = 1;
     while(!q.empty()){
         Node nowNode = q.front();
