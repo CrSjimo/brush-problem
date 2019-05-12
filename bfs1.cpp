@@ -26,7 +26,13 @@ int bfs(int* num,int startPos,int endPos){
     tmp.dist = 0;
     visited[startPos] = 1;
     while(!q.empty()){
-        
+        Node nowNode = q.front();
+        int nowId = nowNode.id;
+        int nowDist = nowNode.dist;
+        if(nowId == endPos)return nowDist;
+        q.pop();
+        addNewNode(q,nowId + num[nowId],nowDist + 1);
+        addNewNode(q,nowId - num[nowId],nowDist + 1);
     }
     return -1;
 }
