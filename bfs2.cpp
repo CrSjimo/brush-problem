@@ -9,7 +9,7 @@ struct Node{
     int y;
     int dist;
 };
-//FUCK OP!!!!!!!!!!
+//FUCK OP!!!!!!!!!
 const int op[8][2] = {-2,1,-1,2,1,2,2,1,2,-1,1,-2,-1,-2,-2,-1};
 bool canDo(int x,int y){
     return (!used[x][y]) && x>=0 && x<8 && y>=0 && y<8;
