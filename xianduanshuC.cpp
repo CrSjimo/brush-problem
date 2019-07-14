@@ -3,7 +3,8 @@
 const int MAXN = 1<<22;
 int sumv[4][MAXN];
 int opv[4][MAXN];
-int xorv[4][MAXN];
+// int xorv[4][MAXN];
+//-1:xor,0:noop,1:1,2:0
 int num[MAXN];
 void pushUp(int o){
     int lc = o*2,rc = o*2+1;
@@ -13,7 +14,7 @@ void pushUp(int o){
 }
 void build(int o,int l,int r){
     four(i){
-        opv[i][o] = ~(xorv[i][o] = sumv[i][o] = 0);
+        opv[i][o] = sumv[i][o] = 0;
     }
     if(l == r){
         four(i){
@@ -29,23 +30,25 @@ void build(int o,int l,int r){
     pushUp(o);
 }
 void doXOR(int o,int i){
-    if(~opv[i][o])opv[i][o]^=1;
-    else xorv[i][o] ^=1;
+    if(opv[i][o]>0){
+        opv[i][o] = (opv[i][o]==1)?2:1;
+    }else{
+        opv[i][o] = ~opv[i][o];
+    }
 }
 void pushDown(int o,int len){
     int lc = o*2,rc = o*2+1;
     int llen = len-len/2,rlen = len/2;
     four(i){
-        if(~opv[i][o]){
+        if(opv[i][o]>0){
             opv[i][lc] = opv[i][rc] = opv[i][o];//down op label
-            opv[i][o] = -1; //remove op label
-            sumv[i][lc] = llen*opv[i][lc];
-            sumv[i][rc] = rlen*opv[i][rc];
-            xorv[i][lc] = xorv[i][rc] = 0;//remove xor label
-        }
-        if(xorv[i][o]){
-            sumv[i][lc] = llen*opv[i][lc];
-            sumv[i][rc] = rlen*opv[i][rc];
+            opv[i][o] = 0; //remove op label
+            sumv[i][lc] = llen*(2-opv[i][lc]);
+            sumv[i][rc] = rlen*(2-opv[i][rc]);
+        }else if(opv[i][o] == -1){
+            opv[i][o] = 0;
+            sumv[i][lc] = llen - sumv[i][lc];
+            sumv[i][rc] = rlen - sumv[i][rc];
             doXOR(lc,i);
             doXOR(rc,i);
         }
@@ -82,14 +85,12 @@ void update(int o,int l,int r){
             if(op == 'O' && is1){
                 sumv[i][o] = len;
                 opv[i][o] = 1;
-                xorv[i][o] = 0;
             }else if(op == 'X' && is1){
                 sumv[i][o] = len - sumv[i][o];
                 doXOR(o,i);
             }else if(op == 'A' && !is1){
                 sumv[i][o] = 0;
-                opv[i][o] = 0;
-                xorv[i][o] = 0;
+                opv[i][o] = 2;
             }
             
         }
