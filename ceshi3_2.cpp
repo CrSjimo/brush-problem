@@ -38,7 +38,7 @@ int main(){
         tot+=w[i];
     }
     ans+=minn;
-    ans+=find(0,1e10);
+    ans+=find(0,1e12);
     printf("%lld\n",ans);
     return 0;
 }

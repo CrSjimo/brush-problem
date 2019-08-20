@@ -17,7 +17,9 @@ void digui(int i,int j){
         digui(i+1,j-1);
         printf("%c",s[j]);
     }else{
+        //printf("{%d,%d}",i,pth[i][j]);
         digui(i,pth[i][j]);
+        //printf("{%d,%d}",pth[i][j]+1,j);
         digui(pth[i][j]+1,j);
     }
 }

@@ -11,12 +11,12 @@ int query(int x){
     }
     return ans;
 }
-int update(int x,int num){
+void update(int x,int num){
     for(;x<=n;x+=(x & (-x))){
         tree[x]+=num;
     }
 }
-int input(){
+void input(){
     scanf("%d",&n);
     for(int i = 1;i<=n;i++){
         int num;
