@@ -20,18 +20,18 @@ inline int prio(char op){
 }
 
 string f(int& i,string& s){
-    char nowop = s[i++];
-    int nowprio = prio(nowop);
-    if(nowprio == INF)return string({s[i-1],0});
-    char rop = s[i];
-    int rprio = prio(rop);
+    string nowop = s.substr(i++,1);
+    int nowprio = prio(nowop[0]);
+    if(nowprio == INF)return s.substr(i-1,1);
+    string rop = s.substr(i,1);
+    int rprio = prio(rop[0]);
     string r = f(i,s);
-    char lop = s[i];
-    int lprio = prio(lop);
+    string lop = s.substr(i,1);
+    int lprio = prio(lop[0]);
     string l = f(i,s);
     if(lprio<nowprio)l="("+l+")";
-    if(rprio<nowprio || ((nowop=='-'||nowop=='/')&&rprio == nowprio))r="("+r+")";
-    return l+string({nowop,0})+r;
+    if(rprio<nowprio || ((nowop=="-"||nowop=="/")&&rprio == nowprio))r="("+r+")";
+    return l+nowop+r;
 }
 
 int main(){

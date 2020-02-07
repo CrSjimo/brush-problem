@@ -1,0 +1,420 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="NodApp" ng-controller="SimplifyController" ng-cloak>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge; charset=UTF8">
+    <title ng-bind="Title"></title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/font-awesome/css/all.css" rel="stylesheet">
+
+<!-- Toastr style -->
+<link href="/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<!-- ct:summernote editor -->
+<link href="/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+<!-- Gritter -->
+<link href="/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+<!-- ct:Globals style -->
+<link href="/css/Globals.css" rel="stylesheet">
+<!-- ct:51nod style -->
+<link href="/css/51nod.css?version=7" rel="stylesheet">
+<!-- ct:icheck -->
+<link href="/css/plugins/iCheck/custom.css" rel="stylesheet">
+<!-- ct:datatimepicker -->
+<link href="/css/plugins/datatimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<!-- orris -->
+<link href="/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+<!-- Bootstrap select2 -->
+<link href="/css/plugins/select2/select2.min.css" rel="stylesheet">
+<!-- Ladda -->
+<link href="/css/plugins/ladda/ladda-themeless.min.css" rel="stylesheet">
+<!-- VideoJs -->
+<link href="/css/plugins/videojs/video-js.min.css" rel="stylesheet">
+<!-- ChartJs -->
+<link href="/css/plugins/chartJs/Chart.min.css" rel="stylesheet">
+<!-- Calendar -->
+<link href="/css/plugins/calendar-heatmap/calendar-heatmap.min.css" rel="stylesheet">
+<!-- Highlight -->
+<link href="//Upload.51nod.com/Scripts/HighLight/styles/atom-one-light.css?version=1" rel="stylesheet">
+
+
+<link href="/css/animate.css" rel="stylesheet">
+<link href="/css/style.css?version=6" rel="stylesheet">
+
+    <script>if (window.location.host.indexOf('51nod') === 0) window.location.href = window.location.href.replace('51nod.com', 'www.51nod.com');</script>
+
+<!-- Mainly scripts -->
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- AngularJs -->
+<script src="/js/angular.min.js?version=2" type="text/javascript" charset="utf-8"></script>
+<script src="/js/angular-sanitize.min.js?version=2" type="text/javascript" charset="utf-8"></script>
+
+<!-- Domain -->
+<script>document.domain = window.location.hostname.replace(/.+(?=5\dnod.com)/, '');</script>
+<script src="/include/controller/global-variable.js?version=50" type="text/javascript" charset="utf-8"></script>
+<script src="/include/controller/nod-app.js?version=127" type="text/javascript" charset="utf-8"></script>
+<script src="/include/controller/tool.js?version=152" type="text/javascript" charset="utf-8"></script>
+<script src="/include/controller/filter.js?version=85" type="text/javascript" charset="utf-8"></script>
+
+<!-- WebSocket -->
+<script src="/include/controller/websocket.js?version=115"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]],
+            displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+            processEscapes: true,
+        },
+        showProcessingMessages: false,
+        messageStyle: "none",
+        showMathMenu: false,
+        elements: []
+    });
+</script>
+<script type="text/javascript" async src="//Upload.51nod.com/Scripts/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="//Upload.51nod.com/Scripts/HighLight/highlight.js?version=1"></script>
+
+</head>
+
+  
+    <body id="page-top" class="landing-page no-skin-config pace-done">
+        <div class="navbar-wrapper">
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">切换导航</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" ng-href="https://school.51nod.com/">
+                            51nod 校园版
+                        </a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a class="page-scroll" ng-href="#page-top">主页</a></li>
+                            <li class=""><a class="page-scroll" data-toggle="modal" data-target="#UserLogin">登录</a></li>
+                            <li class=""><a class="page-scroll" ng-href="{{Path.Register()}}">注册</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#inSlider" data-slide-to="0" class=""></li>
+                <li data-target="#inSlider" data-slide-to="1" class="active"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="item">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>51nod</h1>
+                            <p>算法编程社区。</p>
+                            <p>
+                                <a class="btn btn-lg btn-primary" ng-href="#" role="button">阅读更多</a>
+                                <a class="caption-link" ng-href="#" role="button">灵感主题</a>
+                            </p>
+                        </div>
+                        <div class="carousel-image wow zoomIn animated" style="visibility: visible;">
+                        </div>
+                    </div>
+                    <!-- Set background for slide in css -->
+                    <div class="header-back one"></div>
+                </div>
+                <div class="item active">
+                    <div class="container">
+                        <div class="carousel-caption blank">
+<!--                            <h1>启发的界面</h1>
+                            <p>INSPINIA管理主题是具有平面设计理念的高级管理信息板模板。</p>
+                            <p><a class="btn btn-lg btn-primary" ng-href="#" role="button">学到更多</a></p>-->
+                        </div>
+                    </div>
+                    <!-- Set background for slide in css -->
+                    <div class="header-back two"></div>
+                </div>
+            </div>
+            <a class="left carousel-control" ng-href="#inSlider" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">向前</span>
+            </a>
+            <a class="right carousel-control" ng-href="#inSlider" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">向后</span>
+            </a>
+        </div>
+        <section id="features" class="container services">
+            <div class="row">
+                <div class="col-lg-3">
+                    <h2>竞赛单元</h2>
+                    <p>每周有更新，每月有竞赛，亲身体验大赛乐趣</p>
+                    <p><a class="navy-link" ng-href="#" role="button">更多 »</a></p>
+                </div>
+                <div class="col-lg-3">
+                    <h2>学习园地</h2>
+                    <p>大咖云集，高手助阵，解密信息学竞赛全知识点。</p>
+                    <p><a class="navy-link" ng-href="#" role="button">更多 »</a></p>
+                </div>
+                <div class="col-lg-3">
+                    <h2>答疑解惑</h2>
+                    <p>5万会员，互助平台，只有想不到，没有答不出......</p>
+                    <p><a class="navy-link" ng-href="#" role="button">更多 »</a></p>
+                </div>
+                <div class="col-lg-3">
+                    <h2>刷题专区</h2>
+                    <p>刷过千道题，不是大咖也是高手，比的就是手快，刷的就是未来......</p>
+                    <p><a class="navy-link" ng-href="#" role="button">更多 »</a></p>
+                </div>
+            </div>
+        </section>
+        <!-- Model: Login -->
+<div class="modal inmodal fade" id="UserLogin" ng-init="ModalCtrl.Add('UserLogin');" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭窗口</span></button>
+                <h4 class="modal-title">
+                    <span class="g-mr-20">登录</span>
+                </h4>
+            </div>
+            <div class="modal-body" onkeyup="Tools.KeyHook(13, 'UserLoginBtn')">
+                <div class="g-mb-10">
+                    <div class="form-group">
+                        <input id="UserLoginName" type="text" class="form-control" placeholder="请输入登录邮箱或手机号" ng-model="UserLoginName" required="required"/>
+                    </div>
+                    <div class="form-group">
+                                                <div style="position: relative;">
+    <input id="UserLoginPwd" type="password" autocomplete="off" class="form-control" placeholder="请输入密码" ng-model="UserLoginPwd"/>
+    <i ng-if="IsDataReady" ng-init="ShowPwd=false;" ng-mousedown="ShowPwd=true;Tools.InputToText('UserLoginPwd');" ng-mouseup="ShowPwd=false;Tools.InputToPwd('UserLoginPwd');" ng-mouseleave="ShowPwd=false;Tools.InputToPwd('UserLoginPwd');" ng-class="{'far fa-eye': ShowPwd, 'far fa-eye-slash' : !ShowPwd,}" title="按住显示密码" style="position: absolute;right: 1em;bottom:0.5em; cursor:pointer; font-size: 1.2em;"></i>
+</div>
+                    </div>
+                    <div class="form-group text-left">
+                        <div class="checkbox i-checks">
+                            <label class="g-pl-0">
+                                <input type="checkbox" class="m-r-xs" ng-init="UserLoginIsPersistent=true;" ng-model="UserLoginIsPersistent" ng-icheck />
+                                <span class="m-l-xs">记住我</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                       <!-- <button type="button" class="btn btn-white" data-toggle="modal" data-target="#UserRegister" data-dismiss="modal">我要注册</button>
+                        <button type="button" class="btn btn-white" data-toggle="modal" data-target="#UserForgotPassword" data-dismiss="modal">找回密码</button>-->
+                        <a class="btn btn-white" ng-href="{{Path.Login()}}">找回密码</a>
+                        <button id="UserLoginBtn" type="button" class="btn btn-info" ng-click="NodPost.User.Login(getDomValue('UserLoginName'), getDomValue('UserLoginPwd'), UserLoginIsPersistent)">登录</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                第三方登录
+                <script>
+    Tools.ThirdLoginHref = function () {
+        if (window.location.pathname.toLocaleLowerCase() === '/Register.html'.toLocaleLowerCase()) {
+            Tools.SetCookie('ThirdLoginHref', window.location.origin + '/Focus.html', 1 / 24 / 6, true);
+        }
+        else if (window.location.pathname.toLocaleLowerCase() === '/Login.html'.toLocaleLowerCase()) {
+            if (window.location.search.length > 0) {
+                var searchStrs = window.location.search.substring(1).split('&');
+                for (var item in searchStrs) {
+                    if (searchStrs[item].split('=')[0] === 'oldhref') {
+                        Tools.SetCookie('ThirdLoginHref', decodeURIComponent(searchStrs[item].split('=')[1]), 1 / 24 / 6, true);
+                        break;
+                    }
+                }
+            }
+            else {
+                Tools.SetCookie('ThirdLoginHref', window.location.origin + '/Focus.html', 1 / 24 / 6, true);
+            }
+        }
+        else {
+            var oldhref = window.location.origin + window.location.pathname + window.location.search + window.location.hash.substring(window.location.hash.lastIndexOf('#'));
+            Tools.SetCookie('ThirdLoginHref', oldhref, 1 / 24 / 6, true);
+        }
+    }
+    Tools.QQLogin = function () {
+        Tools.ThirdLoginHref();
+        var state = Tools.Random().toString();
+        var clientId = '100306089';
+        Tools.SetCookie('QQLoginState', state, 1 / 24 / 6, true);
+        window.location.href = 'https://graph.qq.com/oauth2.0/authorize?response_type=' + encodeURIComponent('code')
+            + '&client_id=' + encodeURIComponent(clientId)
+            + '&state=' + encodeURIComponent(state)
+            + '&redirect_uri=' + encodeURIComponent('https://www.51nod.com/CallBack/QQLogin');
+    }
+    Tools.WeiXinLogin = function () {
+        Tools.ThirdLoginHref();
+        var state = Tools.Random().toString();
+        var clientId = 'wx25b79a980f6baec3';
+        Tools.SetCookie('WXLoginState', state, 1 / 24 / 6, true);
+        window.location.href = 'https://open.weixin.qq.com/connect/qrconnect?appid=' + encodeURIComponent(clientId)
+            + '&redirect_uri=' + encodeURIComponent('https://www.51nod.com/CallBack/WXLogin')
+            + '&response_type=' + encodeURIComponent('code')
+            + '&scope=' + encodeURIComponent('snsapi_login')
+            + '&state=' + encodeURIComponent(state);
+    }
+    Tools.WeiBoLogin = function () {
+        Tools.ThirdLoginHref();
+        var clientId = '3138594281';
+        window.location.href = 'https://api.weibo.com/oauth2/authorize?client_id=' + encodeURIComponent(clientId)
+            + '&response_type=' + encodeURIComponent('code')
+            + '&redirect_uri=' + encodeURIComponent('https://www.51nod.com/login/weibo');
+    }
+</script>
+
+<!--<span class="text-danger">第三方登录接口暂时修复中</span>-->
+<a ng-click="Tools.QQLogin();"><i class="fab fa-qq g-cursor-pointer" aria-hidden="true"></i></a>
+<a ng-click="Tools.WeiXinLogin();"><i class="fab fa-weixin g-cursor-pointer" aria-hidden="true"></i></a>
+<a ng-click="Tools.WeiBoLogin();"><i class="fab fa-weibo g-cursor-pointer" aria-hidden="true"></i></a>
+<!--<span class="text-danger">第三方登录如果出错，请清空一下浏览器51nod域下的cookie。</span>-->
+                为避免频繁登录，你可在登录后通过个人设置转为本地账号
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Model: Login -->
+
+
+        <!-- Mainly scripts -->
+<script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Flot -->
+<script src="/js/plugins/flot/jquery.flot.js"></script>
+<script src="/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="/js/plugins/flot/jquery.flot.spline.js"></script>
+<script src="/js/plugins/flot/jquery.flot.resize.js"></script>
+<script src="/js/plugins/flot/jquery.flot.pie.js"></script>
+
+<!-- Peity -->
+<script src="/js/plugins/peity/jquery.peity.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="/js/inspinia.js"></script>
+<script src="/js/plugins/pace/pace.min.js"></script>
+
+<!-- jQuery UI -->
+<script src="/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<!-- GITTER -->
+<script src="/js/plugins/gritter/jquery.gritter.min.js"></script>
+
+<!-- Sparkline -->
+<script src="/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+<!-- ChartJS -->
+<script src="/js/plugins/chartJs/Chart.min.js?version=2"></script>
+
+<!-- D3 -->
+<script src="/js/plugins/d3/d3.min.js?version=1"></script>
+
+<!-- Moment -->
+<script src="/js/plugins/moment/moment-with-locales.min.js?version=1"></script>
+<script type="text/javascript">moment.locale('zh-cn');</script>
+
+<!-- Calendar -->
+<script src="/js/plugins/calendar-heatmap/calendar-heatmap.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Sparkline demo data  -->
+<script src="/js/demo/sparkline-demo.js"></script>
+
+<!-- Peity -->
+<script src="/js/demo/peity-demo.js"></script>
+
+<!-- Ace -->
+<script src="/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Typehead -->
+<!--<script src="/js/plugins/typehead/bootstrap3-typeahead.js?version=1"></script>-->
+<script src="/js/plugins/typehead/bootstrap3-typeahead.min.js?version=3"></script>
+
+<!-- SweetAlert2 -->
+<script src="/js/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
+<script src="/js/plugins/sweetalert2/polyfill.js"></script>
+
+<!-- Toastr -->
+<script src="/js/plugins/toastr/toastr.min.js"></script>
+
+<script>
+    toastr.options = {
+        "closeButton": false,
+        "debug": true,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "400",
+        "hideDuration": "1000",
+        "timeOut": "4000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut",
+    }
+</script>
+
+
+<!-- Config -->
+<script src="/common/path-js.js?version=45" type="text/javascript" charset="utf-8"></script>
+<script src="/common/getter.js?version=16" type="text/javascript" charset="utf-8"></script>
+<script src="/include/controller/lang.js?version=37" type="text/javascript" charset="utf-8"></script>
+<script src="/include/controller/enum.js?version=97" type="text/javascript" charset="utf-8"></script>
+<script src="/include/controller/nod-post.js?version=107" type="text/javascript" charset="utf-8"></script>
+<script src="/include/controller/nod-post-judge.js?version=31" type="text/javascript" charset="utf-8"></script>
+<script src="/include/controller/permission.js?version=62" type="text/javascript" charset="utf-8"></script>
+
+<!-- iCheck -->
+<script src="/js/plugins/iCheck/icheck.min.js"></script>
+<script src="/include/controller/javascript-icheck.js?version=2"></script>
+
+
+<!-- Toastr -->
+<script src="/js/plugins/clipboard/clipboard.min.js"></script>
+<script type="text/javascript">
+    MainApp.directive('ngClipBtn', function ($document) {
+        return {
+            restrict: 'A',
+            link: function ($scope, element, $attrs, ngModel) {
+                var value = element[0].getAttribute('data-value');
+                var title = element[0].getAttribute('data-title');
+                var clipBtn = new ClipboardJS(element[0], { text: function (trigger) { return Tools.GetChildObj($scope, value); } });
+                clipBtn.on('success', function (e) { Tools.ToastrSuccess(title, '复制成功！'); });
+                clipBtn.on('error', function (e) { Tools.ToastrError(title, '复制失败！'); });
+                element[0].setAttribute('data-clipboard-action', 'copy');
+            },
+        };
+    });
+</script>
+
+<!-- Bootstrap markdown -->
+<script src="/js/plugins/jsencrypt/jsencrypt.min.js"></script>
+<script>
+    var RSAPublicKey = "MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgGTNlnTkCV1UvqhwEwoTBSgve1IceORoDpB8lV7g358xqoXTHFj7i+4SP3mD48VmGFUyKu+ZiH8hN0Od6s6+bttQ7YbEvSRwEjwfVC9DCCPukAHtirBSCDUqbFJPg8BfsHIOtPDx0CJCNmzutNkSnhD/lNadJvHU/Gl9NitAceZlAgMBAAE=";
+    var RSAEncrypt = function (data) {
+        var jse = new JSEncrypt();
+        jse.setPublicKey(RSAPublicKey);
+        return jse.encrypt(data ? data : "");
+    }
+</script>
+
+
+<script src="/include/controller/simplify-controller.js?version=6" type="text/javascript" charset="utf-8"></script>
+<script src="/include/controller/page-controller.js?version=6" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript">
+            PageHook = function () {
+            }
+            DataHook = function () {
+                if (Scope.CurrentUser.Id > 0) {
+                    window.location.href = Path.Path.Focus();
+                }
+            }
+        </script>
+    </body>
+</html>
