@@ -11,6 +11,6 @@ long long ksm(long long a,long long k){
 }
 int main(){
 	scanf("%lld%lld%lld",&b,&p,&MOD);
-	printf("%lld^%lld mod %lld=%lld\n",b,p,MOD,ksm(b,p));
+	printf("%lld\n",ksm(b,p));
 	return 0;
 }

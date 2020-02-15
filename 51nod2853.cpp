@@ -44,12 +44,17 @@ bool spfa(int s){
 }
 std::vector<char> vis;
 bool r = true;
-bool dfs(int u){
+void dfs(int u)
+{
     vis[u]=true;
     for(int i=0;i<G[u].size();i++){
-        int v = G[u][i].v;
-        if(!vis[v])dis[v]=dis[u]+G[u][i].dis,dfs(v);
-        else if(dis[v]!=dis[u]+G[u][i].dis)r=false;
+        Edge e = G[u][i];
+        if(!vis[e.v]){
+            dis[e.v]=dis[u]+e.dis;
+            dfs(e.v);
+        }else if(dis[e.v]!=dis[u]+e.dis){
+            r=false;
+        }
     }
 }
 inline void add_edge(int x,int y,int dis){
@@ -61,7 +66,7 @@ int main(){
     scanf("%d",&cas);
     while(cas--){
         scanf("%d%d%d",&a,&b,&m);
-        n=a+b;
+        n=a+b;r=true;
         dis.resize(n+10);dis.assign(n+5,0);
         G.resize(n+10);G.assign(n+5,std::vector<Edge>());
         inq.resize(n+10);cnt.resize(n+10);
@@ -72,10 +77,10 @@ int main(){
             scanf("%d%d%d",&x,&y,&k);
             add_edge(x,y+a,k);add_edge(y+a,x,-k);
         }
+        // for(int i=1;i<=n;i++){
+        //     add_edge(0,i,0);
+        // }
         for(int i=1;i<=n;i++){
-            add_edge(0,i,0);
-        }
-        for(int i=0;i<=n;i++){
             if(!vis[i])dfs(i);
         }
         if(!r){
