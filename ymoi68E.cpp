@@ -21,7 +21,7 @@ inline int yf(int u){
     return (u-1)%m+1;
 }
 int op[4][2]={{0,-1},{-1,0},{0,1},{1,0}};
-int color[55];
+vector<int> color;
 int cnt = 0;
 int maxn = -19260817;
 int curr = 0;
@@ -39,6 +39,7 @@ void dfs(int u){
 int main(){
     scanf("%d%d",&m,&n);
     G.resize(n*m+10);GR.resize(n*m+10);
+    color.resize(n*m+10);
     for(int i=1;i<=n;i++){
         for(int j=1;j<=m;j++){
             scanf("%d",&a[i][j]);
@@ -72,6 +73,9 @@ int main(){
             }
         }
     }
+    // for(int i=1;i<=cnt;i++){
+    //     printf("t: %d %d\n",i,colorNum[i]);
+    // }
     // for(int i=1;i<=n;i++){
     //     for(int j=1;j<=m;j++){
     //         printf("%d ",color[f(i,j)]);
