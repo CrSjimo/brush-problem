@@ -19,7 +19,7 @@ void tarjan(int u){
         if(!dfn[v]){
             tarjan(v);
             low[u]=std::min(low[u],low[v]);
-        }else if(vis[v]){
+        }else if(vis[v]){//here vis means in stack
             low[u]=std::min(low[u],dfn[v]);
         }
     }

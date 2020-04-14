@@ -1,6 +1,8 @@
-#include<stdio.h>
+#include<cstdio>
 #include<vector>
 #include<queue>
+using std::vector;
+using std::priority_queue;
 #define DEBUG
 //HDU_1874
 struct Edge{
@@ -15,8 +17,8 @@ struct Edge{
 		return dis>e.dis;
 	}
 };
-std::vector< std::vector<Edge> > G;
-std::vector<int> dis;
+vector< vector<Edge> > G;
+int* dis;
 int n,m,s,t;
 void dijstra(){
 	std::priority_queue<Edge> q;

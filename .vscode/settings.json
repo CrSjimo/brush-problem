@@ -74,7 +74,8 @@
         "regex": "cpp",
         "variant": "cpp",
         "iterator": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "ios": "cpp"
     },
     "cSpell.enabledLanguageIds": [
         "asciidoc",
