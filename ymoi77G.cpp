@@ -1,9 +1,10 @@
 #include<cstdio>
 #include<cstdlib>
 #include<vector>
-#include<queue>
+#include<stack>
 using std::vector;
-using std::queue;
+#define queue std::stack
+#define front top
 vector< vector<int> >G;
 int* ind;
 int n;

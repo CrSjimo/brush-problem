@@ -45,8 +45,9 @@ bool spfa(){
     }
     return true;
 }
+const int INF = 0x7f7f7f7f;
 void mcmf(){
     while(spfa()){
-        
+        int minf = INF;
     }
 }
