@@ -1,4 +1,9 @@
 #include<cstdio>
+#include<map>
+#include<cmath>
+using std::map;
+
+#define int long long
 
 typedef long long ll;
 
@@ -39,18 +44,48 @@ void task2(int y,int z,int p){
     }
     int x,trash;
     exgcd(y,p,x,trash);
-    printf("%d\n",x*(z/ccp));
+    x=x*z/ccp;
+    int mod = p/ccp;
+    x=(x%mod+mod)%mod;
+    printf("%lld\n",x);
+}
+
+ll bsgs(int a,int b,int p){
+    if(b==1)return 0;
+    if(a%p==0&&b)return -1;
+    MOD = p;
+    map<ll,int> mp;
+    int t=ceil(sqrt(p));
+    ll s=b%p;
+    for(int i=1;i<=t;i++){
+        s=(s*a)%p;
+        mp[s]=i;
+    }
+    ll a_sqrtt = ksm(a,t);
+    s=1;
+    for(int i=1;i<=t;i++){
+        s=(s*a_sqrtt)%p;
+        if(mp.count(s)){
+            int j=mp[s];
+            return ((i*t)%p-j)%p;
+        }
+    }
+    return -1;
 }
 
 void task3(int y,int z,int p){
-    printf("19260817\n");
+    ll ans = bsgs(y,z,p);
+    if(ans!=-1)printf("%lld\n",ans);
+    else printf("Orz, I cannot find x!\n");
 }
 
+#undef int
 int main(){
+#define int long long
     int cas,k;
-    scanf("%d%d",&cas,&k);
+    scanf("%lld%lld",&cas,&k);
     while(cas--){
-        int y,z,p;scanf("%d%d%d",&y,&z,&p);
+        int y,z,p;scanf("%lld%lld%lld",&y,&z,&p);
         if(k==1){
             task1(y,z,p);
         }else if(k==2){
