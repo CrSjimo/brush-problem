@@ -1,0 +1,33 @@
+Ryanno:
+
+  types:
+    - empty: &1
+        title: string
+        text: string
+    - select:
+        << &1
+        type: row/column
+        options: list/object
+        answer: number/string, list of number/string
+        correct-hint: string
+        wrong-hint: string
+    - sequence:
+        << &1
+        items: list of string
+        answer: list/list of list
+        correct-hint: string
+        wrong-hint: string
+    - text:
+        << &1
+        placeholder: string
+        pre-filled: string
+        answer: string
+        use-regexp: boolean
+        correct-hint: string
+        wrong-hint: string
+    - pairing:
+        << &1
+        pairs: object
+        correct-hint: string
+        wrong-hint: string
+  
