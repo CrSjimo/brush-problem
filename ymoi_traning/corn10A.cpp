@@ -50,7 +50,7 @@ int main(){
     if(n==1)return 0;
     scanf("%lf%lf%lf%lf",&maxn.p1.y,&maxn.p1.x,&maxn.p2.y,&maxn.p2.x);
     add_map(maxn.p1);add_map(maxn.p2);
-    printf("%.2lf\n",maxn.slope());
+    printf("%.2lf ",maxn.slope());
     for(int i=3;i<=n;i++){
         Point p;scanf("%lf%lf",&p.y,&p.x);
         add_map(p);
@@ -66,7 +66,7 @@ int main(){
             // printf("testt2: (%.2lf,%.2lf)\n",t2.x,t2.y);
             maxn=max(maxn,Line(p,t2));
         }
-        printf("%.2lf\n",maxn.slope());
+        printf("%.2lf ",maxn.slope());
     }
     return 0;
 }
