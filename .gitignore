@@ -4,3 +4,4 @@
 *.in
 *.ans
 *.txt
+*.diff

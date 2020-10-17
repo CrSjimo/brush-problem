@@ -63,6 +63,7 @@ int main(){
     for(int i=1;i<=m;i++){
         dfs(i,i,0);
     }
+    f[1]=w[1];
     dfs2(1);
     printf("%d\n",*max_element(f+1,f+m+1));
     return 0;
