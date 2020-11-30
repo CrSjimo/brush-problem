@@ -1,11 +1,12 @@
 #include<bits/stdc++.h>
 using namespace std;
-int f[1010][1010];
-int w[1010];
-int c[1010];
+int f[10100][1010];
+int w[10100];
+int c[10100];
 int main(){
+    freopen("running.out.diff","w",stdout);
     int m,n;
-    cin>>m>>n;
+    cin>>n>>m;
     for(int i=1;i<=n;i++){
         cin>>w[i]>>c[i];
     }
